@@ -19,17 +19,17 @@ moderate earthquake.
 import math
 
 def main(scale, richter_scale):
-    index = 0
-    index = richter_scale['magnitude'][round(scale)]
 
-    earthquake_descriptor = richter_scale['descriptor'][index]
-
-    return print(f"A magnitude of {scale} is considered as {earthquake_descriptor}")
+    for i in range(len(richter_scale['magnitude'])):
+        if scale >= richter_scale['magnitude'][i][0] and scale <= richter_scale['magnitude'][i][1]:
+            return print(f"A magnitude of {scale} is a {richter_scale['descriptor'][i]} earthquake.")
+        elif scale > 10:
+            return print("Now that's a meteoric earthquake!")
 
 if __name__ == "__main__":
     richter_scale = {
-        'magnitude': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        'descriptor': ['Micro', 'Micro', 'Micro', 'Very minor', 'Minor', 'Light', 'Moderate', 'Strong', 'Major', 'Great', 'Meteoric']
+        'magnitude': [[0,1.9], [2, 2.9], [3, 3.9], [4, 4.9], [5, 5.9], [6, 6.9], [7, 7.9], [8, 9.9]],
+        'descriptor': ['Micro', 'Very minor', 'Minor', 'Light', 'Moderate', 'Strong', 'Major', 'Great', 'Meteoric']
     }
 
     print("This program tells you the descriptor of a Richter scale magnitude")
